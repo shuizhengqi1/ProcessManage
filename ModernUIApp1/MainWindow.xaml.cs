@@ -1,4 +1,4 @@
-﻿using FirstFloor.ModernUI.Windows.Controls;
+﻿using MahApps.Metro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace ModernUIApp1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ModernWindow
+    public partial class MainWindow : MahApps.Metro.Controls.MetroWindow
     {
         public MainWindow()
         {
@@ -47,9 +47,10 @@ namespace ModernUIApp1
 
         void stop_Click(object sender, RoutedEventArgs e)
         {
-            MenuItem item = sender as MenuItem;
-            
-
+             Object obj =  ContextMenuService.GetPlacementTarget(
+                LogicalTreeHelper.GetParent(sender as MenuItem));
+            ListViewItem list = obj as ListViewItem;
+            MessageBox.Show(list.Content.ToString());
         }
 
         void lvi_MouseDoubleClick(object sender, MouseButtonEventArgs e)
